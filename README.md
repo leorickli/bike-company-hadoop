@@ -45,7 +45,7 @@ We have the files inside our VM. Now we can send them to Hive and query some dat
 
 ### Uploading files to Hive
 
-We will use Beeline instead of Hive, Beeline is an enhanced replacement for the Hive CLI. To login into Beeline, we type the command down below:
+We will use Beeline instead of Hive, Beeline is an enhanced replacement for the Hive CLI. To log into Beeline, we type the command down below:
 
 ```
 beeline -u jdbc:hive2://localhost:10000/default -n <user>@<cluster> -d org.apache.hive.jdbc.HiveDriver
@@ -59,7 +59,7 @@ beeline -u jdbc:hive2://localhost:10000/default -n <user>@<cluster> -d org.apach
 - **-n <user>@<cluster>**: This part specifies the username and cluster information. Replace <user> with your Hive username, and <cluster> with the name of your Hive cluster or instance.
 - **-d org.apache.hive.jdbc.HiveDriver**: This part specifies the JDBC driver class to use, which is the correct driver for Hive.
 
-We now create a database inside and check for its existance:
+We now create a database inside and check for its existence:
 
 ```
 CREATE DATABASE IF NOT EXISTS <your_database_name>;
@@ -68,7 +68,7 @@ SHOW DATABASES;
 
 <img width="251" alt="Screenshot 2023-09-02 at 14 28 50" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/ddd6caf7-fcc0-4a33-a2ae-aa9024fd2b74">
 
-Instead of just creating a simple database, we can also create it with some interesting metadata, properties and even change the location in HDFS, like in the command below:
+Instead of just creating a simple database, we can also create it with some interesting metadata, and properties and even change the location in HDFS, like in the command below:
 
 ```
 CREATE DATABASE IF NOT EXISTS <your_database_name>
@@ -95,7 +95,7 @@ hadoop fs -mkdir bike_company # create a folder inside HDFS
 hdfs dfs -put . bike_company # transfer all the csv files in your current local folder into the folder we just created
 ```
 
-Go back to Beeline. We have to create a SQL script to create the schema for each table and another SQL script to insert all the tables in HDFS to Hive. You can find these SQL DDL statements in [this folder](https://github.com/leorickli/bike-factory-hadoop/tree/main/DDL_queries). After running all the SQL scripts, we can see the tables inside Hive by using "SHOW TABLES":
+Go back to Beeline. We have to create an SQL script to create the schema for each table and another SQL script to insert all the tables in HDFS to Hive. You can find these SQL DDL statements in [this folder](https://github.com/leorickli/bike-factory-hadoop/tree/main/DDL_queries). After running all the SQL scripts, we can see the tables inside Hive by using "SHOW TABLES":
 
 <img width="200" alt="Screenshot 2023-09-02 at 17 36 59" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/dd47cc39-2683-42f4-a2b4-0cbc558ddcea">
 
