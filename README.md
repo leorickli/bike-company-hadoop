@@ -1,5 +1,7 @@
 # bike-factory-hadoop
 
+<img width="582" alt="Screenshot 2023-09-02 at 17 48 57" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/5c5261f6-8a9f-4f90-990c-8d19510e690a">
+
 In this project, we will be using a suite of Apache Hadoop tools hosted in GCP Dataproc for the creation of a relational database and analysis of a bike company dataset.
 
 *Apache Hadoop is an open-source framework for distributed storage and processing of large datasets. It is designed to handle massive amounts of data in a distributed and fault-tolerant manner. Hadoop is widely used for big data processing and analytics in a variety of industries.*
@@ -93,7 +95,9 @@ hadoop fs -mkdir bike_company # create a folder inside HDFS
 hdfs dfs -put . bike_company # transfer all the csv files in your current local folder into the folder we just created
 ```
 
-Go back to Beeline. We have to create a SQL script to create the schema for each table and another SQL script to insert all the tables in HDFS to Hive. You can find these SQL DDL statements in [this folder](https://github.com/leorickli/bike-factory-hadoop/tree/main/DDL_queries).
+Go back to Beeline. We have to create a SQL script to create the schema for each table and another SQL script to insert all the tables in HDFS to Hive. You can find these SQL DDL statements in [this folder](https://github.com/leorickli/bike-factory-hadoop/tree/main/DDL_queries). After running all the SQL scripts, we can see the tables inside Hive by using "SHOW TABLES":
+
+<img width="200" alt="Screenshot 2023-09-02 at 17 36 59" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/dd47cc39-2683-42f4-a2b4-0cbc558ddcea">
 
 ### EDA
 
