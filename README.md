@@ -1,6 +1,6 @@
 # bike-factory-hadoop
 
-<img width="582" alt="Screenshot 2023-09-02 at 17 48 57" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/5c5261f6-8a9f-4f90-990c-8d19510e690a">
+<img width="582" alt="265230845-5c5261f6-8a9f-4f90-990c-8d19510e690a" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/68c74ab3-a082-427f-a942-cdede43fc87c">
 
 In this project, we will be using a suite of Apache Hadoop tools hosted in GCP Dataproc for the creation of a relational database and analysis of a bike company dataset.
 
@@ -18,7 +18,7 @@ I will be using the same dataset on [this repository](https://github.com/leorick
 
 Once the dataset has been cleaned locally using using Pandas, I managed to ingest the data into a MySQL database using DBeaver. This is the ERD created for this dataset:
 
-<img width="892" alt="255449503-67ffc189-f23e-414f-b8d1-8766214e370c-2" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/bd0d451f-d154-48da-b716-1ec3fb892b1f">
+<img width="892" alt="265229956-bd0d451f-d154-48da-b716-1ec3fb892b1f" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/8c2bc6d0-0a07-4aa2-b53c-f6794ecea684">
 
 Now we will deploy the infrastructure on the cloud. Go to GCP and create a new Dataproc cluster, there is no need to create a robust cluster because we will be using a small dataset. The cluster already has Hive installed but we have to install Sqoop manually. 
 
@@ -66,7 +66,7 @@ CREATE DATABASE IF NOT EXISTS <your_database_name>;
 SHOW DATABASES;
 ```
 
-<img width="251" alt="Screenshot 2023-09-02 at 14 28 50" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/ddd6caf7-fcc0-4a33-a2ae-aa9024fd2b74">
+<img width="251" alt="265222577-ddd6caf7-fcc0-4a33-a2ae-aa9024fd2b74" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/028ecf8c-b282-4353-b11a-b8f03a3fb344">
 
 Instead of just creating a simple database, we can also create it with some interesting metadata, and properties and even change the location in HDFS, like in the command below:
 
@@ -85,7 +85,8 @@ COMMENT "The best database"
 LOCATION "/user/example1"
 with DBPROPERTIES('Date' = '2023-12-01', 'Country' = 'ND', 'Creator' = 'Horace MacArthur');
 ```
-<img width="1310" alt="Screenshot 2023-09-02 at 14 46 27" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/40d07486-dfbb-400b-b123-c91f771ac8c5">
+
+<img width="1310" alt="265222592-40d07486-dfbb-400b-b123-c91f771ac8c5" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/0fefab15-ac38-43f0-875d-c40843dcbaff">
 
 Now we have to put the tables from our local directory to HDFS. To do that, we first have to create a parent directory to start creating folders in HDFS, then we create a folder inside HDFS and transfer the files in there:
 
@@ -97,7 +98,7 @@ hdfs dfs -put . bike_company # transfer all the csv files in your current local 
 
 Go back to Beeline. We have to create an SQL script to create the schema for each table and another SQL script to insert all the tables in HDFS to Hive. You can find these SQL DDL statements in [this folder](https://github.com/leorickli/bike-factory-hadoop/tree/main/DDL_queries). After running all the SQL scripts, we can see the tables inside Hive by using "SHOW TABLES":
 
-<img width="200" alt="Screenshot 2023-09-02 at 17 36 59" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/dd47cc39-2683-42f4-a2b4-0cbc558ddcea">
+<img width="200" alt="265230366-dd47cc39-2683-42f4-a2b4-0cbc558ddcea" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/b5285863-583b-46a2-9577-b349d2dca5c6">
 
 ### EDA
 
@@ -112,7 +113,7 @@ ORDER BY totaldue DESC
 LIMIT 10;
 ```
 
-<img width="265" alt="Screenshot 2023-09-03 at 21 32 58" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/1d0002a0-15e3-4191-a944-404fc38a67d3">
+<img width="265" alt="265296932-1d0002a0-15e3-4191-a944-404fc38a67d3" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/61c3fafd-2fc9-4842-a5e2-a88e6bd9e234">
 
 1. Find the 10 most expensive black bikes.
 
@@ -132,7 +133,7 @@ ORDER BY qtd DESC
 LIMIT 10;
 ```
 
-<img width="260" alt="Screenshot 2023-09-02 at 17 11 14" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/69a4841c-2b75-4c37-9dc2-907675acf55a">
+<img width="260" alt="265228582-69a4841c-2b75-4c37-9dc2-907675acf55a" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/001cfc2c-598f-4d27-b875-989239ffd99c">
 
 3. Write a query linking the Person.Person, Sales.Customer, and Sales.SalesOrderHeader tables to get a list of customer names and a count of orders placed.
 
@@ -146,4 +147,4 @@ ORDER BY qtd DESC
 LIMIT 10;
 ```
 
-<img width="305" alt="Screenshot 2023-09-02 at 17 19 36" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/1e501c6e-47b4-40c1-832b-d9710a531fed">
+<img width="305" alt="265229789-1e501c6e-47b4-40c1-832b-d9710a531fed" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/1c2f99d2-e364-4567-81ca-38703a3a78be">
