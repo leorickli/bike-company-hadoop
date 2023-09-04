@@ -104,8 +104,17 @@ Go back to Beeline. We have to create an SQL script to create the schema for eac
 
 Now that we have a relational database system in Hive, we can start making some Exploratory Data Analysis (EDA) on our data:
 
-1. Find the top 10 biggest orders done so far.
-2. 
+1. Find the different types of "PersonType" in the "Person" table.
+
+```
+SELECT DISTINCT PersonType
+FROM Person;
+```
+
+<img width="256" alt="Screenshot 2023-09-03 at 21 56 10" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/d2af1026-7485-460d-aac5-3ace777b2a38">
+
+2. Find the top 10 biggest orders done so far.
+
 ```
 SELECT totaldue
 FROM salesOrderHeader
@@ -114,13 +123,6 @@ LIMIT 10;
 ```
 
 <img width="265" alt="265296932-1d0002a0-15e3-4191-a944-404fc38a67d3" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/61c3fafd-2fc9-4842-a5e2-a88e6bd9e234">
-
-1. Find the 10 most expensive black bikes.
-
-```
-
-```
-
 
 3. Write a query that returns the number of rows in the Sales.SalesOrderDetail table by the SalesOrderID field, provided they have at least three rows of details.
 
@@ -135,7 +137,7 @@ LIMIT 10;
 
 <img width="260" alt="265228582-69a4841c-2b75-4c37-9dc2-907675acf55a" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/001cfc2c-598f-4d27-b875-989239ffd99c">
 
-3. Write a query linking the Person.Person, Sales.Customer, and Sales.SalesOrderHeader tables to get a list of customer names and a count of orders placed.
+4. Write a query linking the Person.Person, Sales.Customer, and Sales.SalesOrderHeader tables to get a list of customer names and a count of orders placed.
 
 ```
 SELECT c.CustomerID AS id, CONCAT(p.FirstName, ' ', p.LastName) AS nome, COUNT(*) AS qtd
@@ -148,3 +150,19 @@ LIMIT 10;
 ```
 
 <img width="305" alt="265229789-1e501c6e-47b4-40c1-832b-d9710a531fed" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/1c2f99d2-e364-4567-81ca-38703a3a78be">
+
+5. Write a query showing the SalesOrderID, OrderDate, and TotalDue fields from the Sales.SalesOrderHeader table. Get only the lines where the order was placed during September/2011 and the total due is above 1,000. Sort by descending total due.
+
+```
+SELECT 
+SalesOrderID as id,
+CAST(OrderDate AS DATE) AS data, 
+TotalDue AS total_devido
+FROM salesOrderHeader
+WHERE OrderDate BETWEEN '2011-09-01' AND '2011-09-30' AND TotalDue > 1000
+ORDER BY total_devido;
+```
+
+<img width="263" alt="Screenshot 2023-09-03 at 21 48 16" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/8564b543-dea4-4d98-803c-00e5a84147e9">
+
+*In this case, the query did not return any values because there is no data in this proposed interval.*
