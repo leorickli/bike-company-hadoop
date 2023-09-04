@@ -103,7 +103,25 @@ Go back to Beeline. We have to create an SQL script to create the schema for eac
 
 Now that we have a relational database system in Hive, we can start making some Exploratory Data Analysis (EDA) on our data:
 
-1. Write a query that returns the number of rows in the Sales.SalesOrderDetail table by the SalesOrderID field, provided they have at least three rows of details.
+1. Find the top 10 biggest orders done so far.
+2. 
+```
+SELECT totaldue
+FROM salesOrderHeader
+ORDER BY totaldue DESC
+LIMIT 10;
+```
+
+<img width="265" alt="Screenshot 2023-09-03 at 21 32 58" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/1d0002a0-15e3-4191-a944-404fc38a67d3">
+
+1. Find the 10 most expensive black bikes.
+
+```
+
+```
+
+
+3. Write a query that returns the number of rows in the Sales.SalesOrderDetail table by the SalesOrderID field, provided they have at least three rows of details.
 
 ```
 SELECT SalesOrderID as id, COUNT(*) AS qtd 
@@ -116,8 +134,7 @@ LIMIT 10;
 
 <img width="260" alt="Screenshot 2023-09-02 at 17 11 14" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/69a4841c-2b75-4c37-9dc2-907675acf55a">
 
-
-2. Write a query linking the Person.Person, Sales.Customer, and Sales.SalesOrderHeader tables to get a list of customer names and a count of orders placed.
+3. Write a query linking the Person.Person, Sales.Customer, and Sales.SalesOrderHeader tables to get a list of customer names and a count of orders placed.
 
 ```
 SELECT c.CustomerID AS id, CONCAT(p.FirstName, ' ', p.LastName) AS nome, COUNT(*) AS qtd
