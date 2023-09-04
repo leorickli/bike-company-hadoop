@@ -1,4 +1,4 @@
-# bike-compnay-hadoop
+# bike-company-hadoop
 
 <img width="582" alt="265230845-5c5261f6-8a9f-4f90-990c-8d19510e690a" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/68c74ab3-a082-427f-a942-cdede43fc87c">
 
