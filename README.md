@@ -100,7 +100,7 @@ Go back to Beeline. We have to create an SQL script to create the schema for eac
 
 <img width="200" alt="265230366-dd47cc39-2683-42f4-a2b4-0cbc558ddcea" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/b5285863-583b-46a2-9577-b349d2dca5c6">
 
-### EDA
+## EDA
 
 Now that we have a relational database system in Hive, we can start making some Exploratory Data Analysis (EDA) on our data:
 
@@ -166,3 +166,7 @@ ORDER BY total_devido;
 <img width="263" alt="Screenshot 2023-09-03 at 21 48 16" src="https://github.com/leorickli/bike-factory-hadoop/assets/106999054/8564b543-dea4-4d98-803c-00e5a84147e9">
 
 *In this case, the query did not return any values because there is no data in this proposed interval.*
+
+## Future endeavors
+
+This dataset was too small for Hadoop to work properly, a simple Pandas query locally would be much faster compared to all the maps and reduces that Hadoop has to do in every single query. Hadoop is a better choice for handling large datasets when you need distributed processing, fault tolerance, scalability, and an ecosystem of tools for big data analytics. Pandas, on the other hand, is more appropriate for smaller datasets that can fit into memory on a single machine and for tasks that don't require distributed computing capabilities.
