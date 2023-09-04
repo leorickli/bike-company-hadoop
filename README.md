@@ -167,6 +167,6 @@ ORDER BY total_devido;
 
 *In this case, the query did not return any values because there is no data in this proposed interval.*
 
-## Future endeavors
+## Final conclusions
 
 This dataset was too small for Hadoop to work properly, a simple Pandas query locally would be much faster compared to all the maps and reduces that Hadoop has to do in every single query. Hadoop is a better choice for handling large datasets when you need distributed processing, fault tolerance, scalability, and an ecosystem of tools for big data analytics. Pandas, on the other hand, is more appropriate for smaller datasets that can fit into memory on a single machine and for tasks that don't require distributed computing capabilities.
